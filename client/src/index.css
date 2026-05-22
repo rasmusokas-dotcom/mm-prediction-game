@@ -292,3 +292,86 @@ h3 {
     max-width: 100%;
   }
 }
+
+.playoff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 900px) {
+  .playoff-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .playoff-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.secondary-button {
+  margin-bottom: 12px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 999px;
+  background: #1e293b;
+  color: white;
+  cursor: pointer;
+}
+
+.secondary-button:hover {
+  background: #334155;
+}
+
+.group-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.group-card h3 {
+  margin-top: 0;
+}
+
+.compact-match-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.compact-match-row {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.compact-match-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.compact-match-teams {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.compact-match-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+@media (max-width: 1000px) {
+  .group-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .group-grid {
+    grid-template-columns: 1fr;
+  }
+}
