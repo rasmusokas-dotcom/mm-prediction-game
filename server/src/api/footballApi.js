@@ -48,6 +48,7 @@ async function getWorldCupMatches() {
     cachedMatches = data.matches.map(match => ({
       id: match.id,
       stage: match.stage,
+      group: match.group,
       utcDate: match.utcDate,
       homeTeam: match.homeTeam?.tla || "",
       awayTeam: match.awayTeam?.tla || "",

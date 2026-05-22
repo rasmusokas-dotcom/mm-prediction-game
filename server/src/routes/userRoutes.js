@@ -44,6 +44,8 @@ router.get("/:name", async (req, res) => {
 
             return {
                 matchId: prediction.matchId,
+                group: match.group,
+                utcDate: match.utcDate,
                 homeTeam: prediction.homeTeam,
                 awayTeam: prediction.awayTeam,
                 homePrediction: prediction.homePrediction,
