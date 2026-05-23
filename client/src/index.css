@@ -375,3 +375,28 @@ h3 {
     grid-template-columns: 1fr;
   }
 }
+
+.match-predictions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.match-prediction-pill {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: #f8fafc;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+.match-prediction-pill span {
+  color: #64748b;
+}
+
+.match-prediction-pill strong {
+  color: #172033;
+}

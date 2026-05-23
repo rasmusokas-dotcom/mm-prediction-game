@@ -1,26 +1,12 @@
 import { getTeamName } from "../utils/teamNames"
+
 function getStatusLabel(status) {
   if (status === "LIVE") return "LIVE"
   if (status === "IN_PLAY") return "LIVE"
   if (status === "PAUSED") return "PAUS"
-
-  if (status === "FINISHED") {
-    return "LÕPPENUD"
-  }
+  if (status === "FINISHED") return "LÕPPENUD"
 
   return "TULEKUL"
-}
-
-function formatDate(date) {
-  if (!date) return ""
-
-  return new Date(date).toLocaleString("et-EE", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit"
-  })
 }
 
 function sortMatches(matches) {
@@ -37,6 +23,18 @@ function sortMatches(matches) {
     const bOrder = statusOrder[b.status] ?? 99
 
     return aOrder - bOrder
+  })
+}
+
+function formatDate(date) {
+  if (!date) return ""
+
+  return new Date(date).toLocaleString("et-EE", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
   })
 }
 
@@ -61,13 +59,32 @@ function Matches({ matches }) {
               {getStatusLabel(match.status)}
             </div>
           </div>
+
           <div className="match-date">
             {formatDate(match.utcDate)}
           </div>
+
           <div className="match-score">
             {match.homeScore ?? "-"} :{" "}
             {match.awayScore ?? "-"}
           </div>
+
+          {match.predictions?.length > 0 && (
+            <div className="match-predictions">
+              {match.predictions.map(prediction => (
+                <div
+                  key={prediction.userName}
+                  className="match-prediction-pill"
+                >
+                  <span>{prediction.userName}</span>
+                  <strong>
+                    {prediction.homePrediction}:
+                    {prediction.awayPrediction}
+                  </strong>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       ))}
     </div>
