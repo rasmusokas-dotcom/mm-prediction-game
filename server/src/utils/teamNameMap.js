@@ -7,6 +7,8 @@ const teamNameMap = {
   holland: "NED",
   madalmaad: "NED",
 
+  spa:"ESP",
+
   curacao: "CUW",
 
   arg: "ARG",
