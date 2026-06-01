@@ -1,6 +1,7 @@
 import express from "express"
 import getWorldCupMatches from "../api/footballApi.js"
 import readPredictionFiles from "../utils/readPredictionFiles.js"
+import getNextRoundKey from "../utils/getNextRoundKey.js"
 
 const router = express.Router()
 
@@ -10,7 +11,7 @@ router.get("/", async (req, res) => {
     const users = readPredictionFiles()
 
     const matchesWithPredictions = matches.map(match => {
-      const predictions = users
+      const scorePredictions = users
         .map(user => {
           const prediction = user.matchPredictions.find(
             prediction => prediction.matchId === match.id
@@ -28,9 +29,50 @@ router.get("/", async (req, res) => {
         })
         .filter(Boolean)
 
+      const nextRoundKey = getNextRoundKey(match.stage)
+
+      if (!nextRoundKey) {
+        return {
+          ...match,
+          scorePredictions
+        }
+      }
+
+      const homeSupporters = []
+      const awaySupporters = []
+      const bothSupporters = []
+
+      users.forEach(user => {
+        const predictions = user.bracketPredictions[nextRoundKey]
+
+        if (!predictions) {
+          return
+        }
+
+        const predictionList = Array.isArray(predictions)
+          ? predictions
+          : [predictions]
+
+        const hasHome = predictionList.includes(match.homeTeam)
+        const hasAway = predictionList.includes(match.awayTeam)
+
+        if (hasHome && hasAway) {
+          bothSupporters.push(user.userName)
+        } else if (hasHome) {
+          homeSupporters.push(user.userName)
+        } else if (hasAway) {
+          awaySupporters.push(user.userName)
+        }
+      })
+
       return {
         ...match,
-        predictions
+        scorePredictions,
+        predictionSummary: {
+          homeSupporters,
+          awaySupporters,
+          bothSupporters
+        }
       }
     })
 

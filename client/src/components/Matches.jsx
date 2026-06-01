@@ -38,6 +38,25 @@ function formatDate(date) {
   })
 }
 
+function getStageLabel(stage) {
+  switch (stage) {
+    case "LAST_32":
+      return "1/16 finaal"
+    case "LAST_16":
+      return "1/8 finaal"
+    case "QUARTER_FINALS":
+      return "Veerandfinaal"
+    case "SEMI_FINALS":
+      return "Poolfinaal"
+    case "THIRD_PLACE":
+      return "3. koha mäng"
+    case "FINAL":
+      return "Finaal"
+    default:
+      return null
+  }
+}
+
 function Matches({ matches }) {
   const sortedMatches = sortMatches(matches)
 
@@ -64,14 +83,20 @@ function Matches({ matches }) {
             {formatDate(match.utcDate)}
           </div>
 
+          {getStageLabel(match.stage) && (
+            <div className="match-stage">
+              {getStageLabel(match.stage)}
+            </div>
+          )}
+
           <div className="match-score">
             {match.homeScore ?? "-"} :{" "}
             {match.awayScore ?? "-"}
           </div>
 
-          {match.predictions?.length > 0 && (
-            <div className="match-predictions">
-              {match.predictions.map(prediction => (
+          {match.scorePredictions?.length > 0 && (
+            <div className="match-scorePredictions">
+              {match.scorePredictions.map(prediction => (
                 <div
                   key={prediction.userName}
                   className="match-prediction-pill"
@@ -83,6 +108,32 @@ function Matches({ matches }) {
                   </strong>
                 </div>
               ))}
+            </div>
+          )}
+          {match.predictionSummary && (
+            <div className="prediction-summary">
+              <strong>Edasi ennustatud</strong>
+
+              {match.predictionSummary.homeSupporters.length > 0 && (
+                <div>
+                  {getTeamName(match.homeTeam)} →{" "}
+                  {match.predictionSummary.homeSupporters.join(", ")}
+                </div>
+              )}
+
+              {match.predictionSummary.awaySupporters.length > 0 && (
+                <div>
+                  {getTeamName(match.awayTeam)} →{" "}
+                  {match.predictionSummary.awaySupporters.join(", ")}
+                </div>
+              )}
+
+              {match.predictionSummary.bothSupporters.length > 0 && (
+                <div>
+                  Mõlemad →{" "}
+                  {match.predictionSummary.bothSupporters.join(", ")}
+                </div>
+              )}
             </div>
           )}
         </div>

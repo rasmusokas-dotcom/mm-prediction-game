@@ -7,15 +7,25 @@ function getPointsClass(points) {
     if (points === 1) return "points-correct"
     return "points-wrong"
 }
-function PredictionList({ teams }) {
+function PredictionList({ items = [] }) {
     return (
         <div className="prediction-list">
-            {teams.filter(Boolean).map(team => (
-                <div key={team} className="prediction-item">
-                    <span>{getTeamName(team)}</span>
-                    <strong>0p</strong>
-                </div>
-            ))}
+            {items
+                .filter(item => item && item.team)
+                .map(item => (
+                    <div
+                        key={item.team}
+                        className="prediction-item"
+                    >
+                        <span>
+                            {getTeamName(item.team)}
+                        </span>
+
+                        <strong>
+                            {item.points}p
+                        </strong>
+                    </div>
+                ))}
         </div>
     )
 }
@@ -127,35 +137,35 @@ function UserPage() {
                 <div className="playoff-grid">
                     <div className="card">
                         <h3>32 parimat</h3>
-                        <PredictionList teams={user.bracketPredictions.roundOf32} />
+                        <PredictionList items={user.bracketDetails.roundOf32} />
                     </div>
 
                     <div className="card">
                         <h3>16 parimat</h3>
-                        <PredictionList teams={user.bracketPredictions.roundOf16} />
+                        <PredictionList items={user.bracketDetails.roundOf16} />
                     </div>
 
                     <div className="card">
                         <h3>8 parimat</h3>
-                        <PredictionList teams={user.bracketPredictions.quarterFinals} />
+                        <PredictionList items={user.bracketDetails.quarterFinals} />
                     </div>
 
                     <div className="card">
                         <h3>4 parimat</h3>
-                        <PredictionList teams={user.bracketPredictions.semiFinals} />
+                        <PredictionList items={user.bracketDetails.semiFinals} />
                     </div>
 
                     <div className="card">
                         <h3>Finalistid</h3>
-                        <PredictionList teams={user.bracketPredictions.finalists} />
+                        <PredictionList items={user.bracketDetails.finalists} />
                     </div>
 
                     <div className="card">
                         <h3>3. koha võitja</h3>
-                        <PredictionList teams={[user.bracketPredictions.thirdPlace]} />
+                        <PredictionList items={[user.bracketDetails.thirdPlace]} />
 
                         <h3>Maailmameister</h3>
-                        <PredictionList teams={[user.bracketPredictions.winner]} />
+                        <PredictionList items={[user.bracketDetails.winner]} />
                     </div>
                 </div>
             </div>

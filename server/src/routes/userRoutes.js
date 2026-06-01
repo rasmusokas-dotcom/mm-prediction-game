@@ -4,6 +4,7 @@ import readPredictionFiles from "../utils/readPredictionFiles.js"
 import getWorldCupMatches from "../api/footballApi.js"
 import calculateBracketPoints from "../utils/calculateBracketPoints.js"
 import buildActualBracket from "../utils/buildActualBracket.js"
+import buildBracketDetails from "../utils/buildBracketDetails.js"
 const router = express.Router()
 
 router.get("/:name", async (req, res) => {
@@ -65,12 +66,17 @@ router.get("/:name", async (req, res) => {
             user.bracketPredictions,
             actualBracket
         )
+        const bracketDetails = buildBracketDetails(
+            user.bracketPredictions,
+            actualBracket
+        )
         res.json({
             name: user.userName,
             matchPoints,
             bracketPoints,
             points: matchPoints + bracketPoints,
             bracketPredictions: user.bracketPredictions,
+            bracketDetails,
             matches: matchDetails
         })
     } catch (error) {
