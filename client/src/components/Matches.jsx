@@ -1,12 +1,12 @@
-import { getTeamName } from "../utils/teamNames"
+import { getTeamName } from "../utils/teamNames";
 
 function getStatusLabel(status) {
-  if (status === "LIVE") return "LIVE"
-  if (status === "IN_PLAY") return "LIVE"
-  if (status === "PAUSED") return "PAUS"
-  if (status === "FINISHED") return "LÕPPENUD"
+  if (status === "LIVE") return "LIVE";
+  if (status === "IN_PLAY") return "LIVE";
+  if (status === "PAUSED") return "PAUS";
+  if (status === "FINISHED") return "LÕPPENUD";
 
-  return "TULEKUL"
+  return "TULEKUL";
 }
 
 function sortMatches(matches) {
@@ -14,59 +14,68 @@ function sortMatches(matches) {
     LIVE: 0,
     IN_PLAY: 0,
     PAUSED: 0,
-    FINISHED: 1,
-    SCHEDULED: 2
-  }
+    SCHEDULED: 1,
+    TIMED: 1,
+    FINISHED: 2,
+  };
 
   return [...matches].sort((a, b) => {
-    const aOrder = statusOrder[a.status] ?? 99
-    const bOrder = statusOrder[b.status] ?? 99
+    const aOrder = statusOrder[a.status] ?? 99;
+    const bOrder = statusOrder[b.status] ?? 99;
 
-    return aOrder - bOrder
-  })
+    if (aOrder !== bOrder) {
+      return aOrder - bOrder;
+    }
+
+    const aDate = new Date(a.utcDate).getTime();
+    const bDate = new Date(b.utcDate).getTime();
+
+    if (aOrder === 2) {
+      return bDate - aDate;
+    }
+
+    return aDate - bDate;
+  });
 }
 
 function formatDate(date) {
-  if (!date) return ""
+  if (!date) return "";
 
   return new Date(date).toLocaleString("et-EE", {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
     hour: "2-digit",
-    minute: "2-digit"
-  })
+    minute: "2-digit",
+  });
 }
 
 function getStageLabel(stage) {
   switch (stage) {
     case "LAST_32":
-      return "1/16 finaal"
+      return "1/16 finaal";
     case "LAST_16":
-      return "1/8 finaal"
+      return "1/8 finaal";
     case "QUARTER_FINALS":
-      return "Veerandfinaal"
+      return "Veerandfinaal";
     case "SEMI_FINALS":
-      return "Poolfinaal"
+      return "Poolfinaal";
     case "THIRD_PLACE":
-      return "3. koha mäng"
+      return "3. koha mäng";
     case "FINAL":
-      return "Finaal"
+      return "Finaal";
     default:
-      return null
+      return null;
   }
 }
 
 function Matches({ matches }) {
-  const sortedMatches = sortMatches(matches)
+  const sortedMatches = sortMatches(matches);
 
   return (
     <div>
-      {sortedMatches.map(match => (
-        <div
-          key={match.id}
-          className="card match-card"
-        >
+      {sortedMatches.map((match) => (
+        <div key={match.id} className="card match-card">
           <div className="match-header">
             <div>
               {getTeamName(match.homeTeam)}
@@ -74,37 +83,29 @@ function Matches({ matches }) {
               {getTeamName(match.awayTeam)}
             </div>
 
-            <div className="match-status">
-              {getStatusLabel(match.status)}
-            </div>
+            <div className="match-status">{getStatusLabel(match.status)}</div>
           </div>
 
-          <div className="match-date">
-            {formatDate(match.utcDate)}
-          </div>
+          <div className="match-date">{formatDate(match.utcDate)}</div>
 
           {getStageLabel(match.stage) && (
-            <div className="match-stage">
-              {getStageLabel(match.stage)}
-            </div>
+            <div className="match-stage">{getStageLabel(match.stage)}</div>
           )}
 
           <div className="match-score">
-            {match.homeScore ?? "-"} :{" "}
-            {match.awayScore ?? "-"}
+            {match.homeScore ?? "-"} : {match.awayScore ?? "-"}
           </div>
 
           {match.scorePredictions?.length > 0 && (
             <div className="match-scorePredictions">
-              {match.scorePredictions.map(prediction => (
+              {match.scorePredictions.map((prediction) => (
                 <div
                   key={prediction.userName}
                   className="match-prediction-pill"
                 >
                   <span>{prediction.userName}</span>
                   <strong>
-                    {prediction.homePrediction}:
-                    {prediction.awayPrediction}
+                    {prediction.homePrediction}:{prediction.awayPrediction}
                   </strong>
                 </div>
               ))}
@@ -130,8 +131,7 @@ function Matches({ matches }) {
 
               {match.predictionSummary.bothSupporters.length > 0 && (
                 <div>
-                  Mõlemad →{" "}
-                  {match.predictionSummary.bothSupporters.join(", ")}
+                  Mõlemad → {match.predictionSummary.bothSupporters.join(", ")}
                 </div>
               )}
             </div>
@@ -139,7 +139,7 @@ function Matches({ matches }) {
         </div>
       ))}
     </div>
-  )
+  );
 }
 
-export default Matches
+export default Matches;
