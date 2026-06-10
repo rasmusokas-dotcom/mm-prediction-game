@@ -81,7 +81,9 @@ h3 {
 }
 
 .leaderboard-row {
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .leaderboard-row:hover {
@@ -246,15 +248,15 @@ h3 {
     gap: 8px;
   }
 
-  .leaderboard-row>div:nth-child(3),
-  .leaderboard-row>div:nth-child(4),
-  .leaderboard-row>div:nth-child(5) {
+  .leaderboard-row > div:nth-child(3),
+  .leaderboard-row > div:nth-child(4),
+  .leaderboard-row > div:nth-child(5) {
     grid-column: 2;
     font-size: 14px;
     color: #64748b;
   }
 
-  .leaderboard-row>div:nth-child(5) {
+  .leaderboard-row > div:nth-child(5) {
     font-size: 18px;
     color: #172033;
     font-weight: bold;
@@ -269,11 +271,11 @@ h3 {
     gap: 6px;
   }
 
-  .matches-table-row>div {
+  .matches-table-row > div {
     font-size: 14px;
   }
 
-  .matches-table-row>div:first-child {
+  .matches-table-row > div:first-child {
     font-size: 16px;
     font-weight: bold;
   }
@@ -401,24 +403,52 @@ h3 {
   color: #172033;
 }
 
-.match-predictions {
+.prediction-summary {
   margin-top: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 14px;
+  color: #475569;
 }
 
-.match-prediction-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+.prediction-summary strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.match-stage {
+  margin-top: 6px;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
   background: #f1f5f9;
-  color: #334155;
-  padding: 6px 10px;
+  padding: 4px 8px;
   border-radius: 999px;
-  font-size: 13px;
+}
+.match-section {
+  margin-top: 14px;
 }
 
-.match-prediction-pill strong {
+.match-section-toggle {
+  width: 100%;
+  background: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
   color: #172033;
+}
+
+.match-section-toggle:hover {
+  background: #f8fafc;
+}
+
+.match-section-content {
+  margin-top: 12px;
 }
