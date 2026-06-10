@@ -18,7 +18,7 @@ function HomePage() {
 
   return (
     <div className="container">
-      <h1>Luupinite ennustus 2026</h1>
+      <h1>MM ennustus 2026</h1>
 
       <div className="section">
         <h2>Edetabel</h2>
