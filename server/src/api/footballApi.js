@@ -56,19 +56,31 @@ async function getWorldCupMatches() {
 
       let status = match.status;
 
-      const wasAlreadyLive =
+      const wasAlreadyLiveOrFinished =
         previousMatch?.status === "IN_PLAY" ||
         previousMatch?.status === "LIVE" ||
-        previousMatch?.status === "PAUSED";
+        previousMatch?.status === "PAUSED" ||
+        previousMatch?.status === "FINISHED";
 
       const apiWentBackToScheduled =
         match.status === "TIMED" || match.status === "SCHEDULED";
 
-      if (wasAlreadyLive && apiWentBackToScheduled) {
+      if (previousMatch?.status === "FINISHED" && match.status !== "FINISHED") {
+        status = "FINISHED";
+      } else if (wasAlreadyLiveOrFinished && apiWentBackToScheduled) {
         status = previousMatch.status;
       }
-      let homeScore = match.score?.fullTime?.home ?? null;
-      let awayScore = match.score?.fullTime?.away ?? null;
+      let homeScore =
+        match.score?.fullTime?.home ??
+        match.score?.regularTime?.home ??
+        match.score?.halfTime?.home ??
+        null;
+
+      let awayScore =
+        match.score?.fullTime?.away ??
+        match.score?.regularTime?.away ??
+        match.score?.halfTime?.away ??
+        null;
 
       const previousHadScore =
         previousMatch &&
