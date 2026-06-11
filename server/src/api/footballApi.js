@@ -9,7 +9,7 @@ const USE_TEST_DATA = process.env.USE_TEST_DATA === "true"
 let cachedMatches = []
 let lastFetchTime = null
 
-const CACHE_TIME = 5 * 60 * 1000
+const CACHE_TIME = 1 * 60 * 1000
 
 async function getWorldCupMatches() {
   if (USE_TEST_DATA) {
