@@ -36,7 +36,11 @@ async function getWorldCupMatches() {
     });
 
     if (!response.ok) {
-      throw new Error("Football API päring ebaõnnestus");
+      const errorText = await response.text();
+
+      throw new Error(
+        `Football API päring ebaõnnestus: ${response.status} ${errorText}`,
+      );
     }
 
     const data = await response.json();
@@ -63,6 +67,20 @@ async function getWorldCupMatches() {
       if (wasAlreadyLive && apiWentBackToScheduled) {
         status = previousMatch.status;
       }
+      let homeScore = match.score?.fullTime?.home ?? null;
+      let awayScore = match.score?.fullTime?.away ?? null;
+
+      const previousHadScore =
+        previousMatch &&
+        previousMatch.homeScore !== null &&
+        previousMatch.awayScore !== null;
+
+      const apiLostScore = homeScore === null || awayScore === null;
+
+      if (previousHadScore && apiLostScore) {
+        homeScore = previousMatch.homeScore;
+        awayScore = previousMatch.awayScore;
+      }
 
       return {
         id: match.id,
@@ -71,8 +89,8 @@ async function getWorldCupMatches() {
         utcDate: match.utcDate,
         homeTeam: match.homeTeam?.tla || "",
         awayTeam: match.awayTeam?.tla || "",
-        homeScore: match.score?.fullTime?.home ?? null,
-        awayScore: match.score?.fullTime?.away ?? null,
+        homeScore,
+        awayScore,
         status,
       };
     });
