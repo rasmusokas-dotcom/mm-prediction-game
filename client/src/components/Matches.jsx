@@ -97,7 +97,8 @@ function Matches({ matches }) {
           </div>
 
           {match.scorePredictions?.length > 0 && (
-            <div className="match-scorePredictions">
+            <div className="match-predictions">
+              {" "}
               {match.scorePredictions.map((prediction) => (
                 <div
                   key={prediction.userName}
