@@ -2,30 +2,28 @@ import express from "express";
 import calculatePoints from "../utils/calculatePoints.js";
 import readPredictionFiles from "../utils/readPredictionFiles.js";
 import getWorldCupMatches from "../api/footballApi.js";
+import {
+  getEstonianDateKey,
+  getYesterdayEstonianDateKey,
+} from "../utils/dateUtils.js";
 
 const router = express.Router();
 
-function isToday(date) {
+function isTargetDate(date, targetDate) {
   if (!date) return false;
 
-  const today = new Date();
-  const matchDate = new Date(date);
-
-  return (
-    today.getFullYear() === matchDate.getFullYear() &&
-    today.getMonth() === matchDate.getMonth() &&
-    today.getDate() === matchDate.getDate()
-  );
+  return getEstonianDateKey(date) === targetDate;
 }
 
 router.get("/", async (req, res) => {
   try {
     const users = readPredictionFiles();
     const matches = await getWorldCupMatches();
+    const targetDate = getYesterdayEstonianDateKey();
 
-    const todayFinishedMatches = matches.filter(
+    const finishedMatches = matches.filter(
       (match) =>
-        isToday(match.utcDate) &&
+        isTargetDate(match.utcDate, targetDate) &&
         match.homeScore !== null &&
         match.awayScore !== null,
     );
@@ -34,7 +32,7 @@ router.get("/", async (req, res) => {
       let points = 0;
 
       user.matchPredictions.forEach((prediction) => {
-        const match = todayFinishedMatches.find(
+        const match = finishedMatches.find(
           (match) => match.id === prediction.matchId,
         );
 
@@ -56,15 +54,16 @@ router.get("/", async (req, res) => {
     );
 
     res.json({
+      date: targetDate,
       winners,
       points: topPoints,
-      matchesCount: todayFinishedMatches.length,
+      matchesCount: finishedMatches.length,
     });
   } catch (error) {
     console.error("Daily top predictor error:", error);
 
     res.status(500).json({
-      message: "Päeva ennustaja arvutamine ebaõnnestus",
+      message: "Eilse päeva ennustaja arvutamine ebaõnnestus",
     });
   }
 });
