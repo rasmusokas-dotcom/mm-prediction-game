@@ -9,6 +9,31 @@ function getStatusLabel(status) {
   return "TULEKUL";
 }
 
+function getStageLabel(stage) {
+  switch (stage) {
+    case "LAST_32":
+      return "1/16 finaal";
+
+    case "LAST_16":
+      return "1/8 finaal";
+
+    case "QUARTER_FINALS":
+      return "Veerandfinaal";
+
+    case "SEMI_FINALS":
+      return "Poolfinaal";
+
+    case "THIRD_PLACE":
+      return "3. koha mäng";
+
+    case "FINAL":
+      return "Finaal";
+
+    default:
+      return null;
+  }
+}
+
 function sortMatches(matches) {
   const statusOrder = {
     LIVE: 0,
@@ -41,32 +66,14 @@ function sortMatches(matches) {
 function formatDate(date) {
   if (!date) return "";
 
-  return new Date(date).toLocaleString("et-EE", {
+  return new Intl.DateTimeFormat("et-EE", {
+    timeZone: "Europe/Tallinn",
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
     hour: "2-digit",
     minute: "2-digit",
-  });
-}
-
-function getStageLabel(stage) {
-  switch (stage) {
-    case "LAST_32":
-      return "1/16 finaal";
-    case "LAST_16":
-      return "1/8 finaal";
-    case "QUARTER_FINALS":
-      return "Veerandfinaal";
-    case "SEMI_FINALS":
-      return "Poolfinaal";
-    case "THIRD_PLACE":
-      return "3. koha mäng";
-    case "FINAL":
-      return "Finaal";
-    default:
-      return null;
-  }
+  }).format(new Date(date));
 }
 
 function Matches({ matches }) {
@@ -87,7 +94,6 @@ function Matches({ matches }) {
           </div>
 
           <div className="match-date">{formatDate(match.utcDate)}</div>
-
           {getStageLabel(match.stage) && (
             <div className="match-stage">{getStageLabel(match.stage)}</div>
           )}
@@ -95,23 +101,6 @@ function Matches({ matches }) {
           <div className="match-score">
             {match.homeScore ?? "-"} : {match.awayScore ?? "-"}
           </div>
-
-          {match.scorePredictions?.length > 0 && (
-            <div className="match-predictions">
-              {" "}
-              {match.scorePredictions.map((prediction) => (
-                <div
-                  key={prediction.userName}
-                  className="match-prediction-pill"
-                >
-                  <span>{prediction.userName}</span>
-                  <strong>
-                    {prediction.homePrediction}:{prediction.awayPrediction}
-                  </strong>
-                </div>
-              ))}
-            </div>
-          )}
           {match.predictionSummary && (
             <div className="prediction-summary">
               <strong>Edasi ennustatud</strong>
@@ -135,6 +124,21 @@ function Matches({ matches }) {
                   Mõlemad → {match.predictionSummary.bothSupporters.join(", ")}
                 </div>
               )}
+            </div>
+          )}
+          {match.scorePredictions?.length > 0 && (
+            <div className="match-predictions">
+              {match.scorePredictions.map((prediction) => (
+                <div
+                  key={prediction.userName}
+                  className="match-prediction-pill"
+                >
+                  <span>{prediction.userName}</span>
+                  <strong>
+                    {prediction.homePrediction}:{prediction.awayPrediction}
+                  </strong>
+                </div>
+              ))}
             </div>
           )}
         </div>

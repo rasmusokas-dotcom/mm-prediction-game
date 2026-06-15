@@ -89,11 +89,17 @@ function UserPage() {
   if (!user) {
     return <p>Kasutajat ei leitud</p>;
   }
-  const todayMatches = user.matches.filter((match) => isToday(match.utcDate));
+  const todayMatches = user.matches
+    .filter((match) => isToday(match.utcDate))
+    .sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate));
 
-  const pastMatches = user.matches.filter((match) => isPast(match.utcDate));
+  const pastMatches = user.matches
+    .filter((match) => isPast(match.utcDate))
+    .sort((a, b) => new Date(b.utcDate) - new Date(a.utcDate));
 
-  const futureMatches = user.matches.filter((match) => isFuture(match.utcDate));
+  const futureMatches = user.matches
+    .filter((match) => isFuture(match.utcDate))
+    .sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate));
   return (
     <div className="container">
       <h1>{user.name}</h1>
@@ -119,7 +125,7 @@ function UserPage() {
             open={showPastMatches}
             onToggle={() => setShowPastMatches(!showPastMatches)}
           >
-            <MatchesTable matches={pastMatches} />
+            <MatchesTable matches={pastMatches} showDate />
           </MatchSection>
 
           <MatchSection
@@ -188,8 +194,17 @@ function MatchSection({ title, count, open, onToggle, children }) {
     </div>
   );
 }
+function formatEstonianDate(date) {
+  if (!date) return "";
 
-function MatchesTable({ matches }) {
+  return new Intl.DateTimeFormat("et-EE", {
+    timeZone: "Europe/Tallinn",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  }).format(new Date(date));
+}
+function MatchesTable({ matches, showDate = false }) {
   return (
     <div className="matches-table">
       <div className="matches-table-header">
@@ -202,9 +217,17 @@ function MatchesTable({ matches }) {
       {matches.map((match) => (
         <div key={match.matchId} className="matches-table-row">
           <div>
-            {getTeamName(match.homeTeam)}
-            {" vs "}
-            {getTeamName(match.awayTeam)}
+            <div>
+              {getTeamName(match.homeTeam)}
+              {" vs "}
+              {getTeamName(match.awayTeam)}
+            </div>
+
+            {showDate && (
+              <small className="match-row-date">
+                {formatEstonianDate(match.utcDate)}
+              </small>
+            )}
           </div>
 
           <div>

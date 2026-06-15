@@ -30,7 +30,7 @@ function HomePage() {
         {!loading && !error && <Leaderboard leaderboard={leaderboard} />}
       </div>
       <div className="section">
-        <h2>🏆 Päeva ennustaja</h2>
+        <h2>🏆 Eilse päeva parim ennustaja</h2>
 
         {dailyLoading && <p>Laen päeva ennustajat...</p>}
 
@@ -41,7 +41,7 @@ function HomePage() {
             {dailyTopPredictor?.points > 0 ? (
               <>
                 <p>
-                  Tänase päeva parim tulemus:
+                  Eilse päeva parim tulemus:
                   <strong> {dailyTopPredictor.points}p</strong>
                 </p>
 
