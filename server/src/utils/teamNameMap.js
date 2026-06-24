@@ -13,6 +13,7 @@ const teamNameMap = {
 
   arg: "ARG",
   argentina: "ARG",
+  argentiina: "ARG",
 
   mex: "MEX",
   mexico: "MEX",
