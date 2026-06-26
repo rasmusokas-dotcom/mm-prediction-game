@@ -5,6 +5,9 @@ const teamNameMap = {
   šveits: "SUI",
 
   BosniaHertsegoviina: "BIH",
+  BosniajaHertsegoviina: "BIH",
+
+  Elevandiluurannik: "CIV",
 
   jaapan: "JPN",
 
