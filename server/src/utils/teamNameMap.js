@@ -6,6 +6,7 @@ const teamNameMap = {
 
   BosniaHertsegoviina: "BIH",
   BosniajaHertsegoviina: "BIH",
+  BosniaJaHertsegoviina: "BIH",
 
   Elevandiluurannik: "CIV",
 
