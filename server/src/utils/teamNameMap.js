@@ -1,6 +1,17 @@
 const teamNameMap = {
 
-  kanada:"CAN",
+  kanada: "CAN",
+
+  šveits: "SUI",
+
+  Bosnia ja Hertsegoviina: "BIH",
+  Bosnia-Hertsegoviina: "BIH",
+
+  jaapan: "JPN",
+
+  maroko: "MAR",
+  
+  austraalia: "AUS",
 
   bra: "BRA",
   brazil: "BRA",
