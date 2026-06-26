@@ -1,4 +1,7 @@
 const teamNameMap = {
+
+  kanada:"CAN",
+
   bra: "BRA",
   brazil: "BRA",
   brasiilia: "BRA",
