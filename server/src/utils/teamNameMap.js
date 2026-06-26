@@ -8,6 +8,7 @@ const teamNameMap = {
   madalmaad: "NED",
 
   spa:"ESP",
+  hispaania:"ESP",
 
   curacao: "CUW",
 
