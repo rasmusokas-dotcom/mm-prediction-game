@@ -9,6 +9,7 @@ const teamNameMap = {
   BosniaJaHertsegoviina: "BIH",
 
   Elevandiluurannik: "CIV",
+  kolumbia: "COL",
 
   jaapan: "JPN",
 
