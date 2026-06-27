@@ -1,4 +1,23 @@
 const teamNameMap = {
+
+  kanada: "CAN",
+
+  šveits: "SUI",
+
+  BosniaHertsegoviina: "BIH",
+  BosniajaHertsegoviina: "BIH",
+  BosniaJaHertsegoviina: "BIH",
+  bosniajahertsegoviina: "BIH",
+
+  Elevandiluurannik: "CIV",
+  kolumbia: "COL",
+
+  jaapan: "JPN",
+
+  maroko: "MAR",
+  
+  austraalia: "AUS",
+
   egipt: "EGY",
   egiptus: "EGY",
   egypt: "EGY",
@@ -35,6 +54,9 @@ const teamNameMap = {
 
   holland: "NED",
   madalmaad: "NED",
+
+  spa:"ESP",
+  hispaania:"ESP",
 
   curacao: "CUW",
 
