@@ -23,7 +23,7 @@ const manualKnockoutMatches = {
   537425: { enabled: true, homeTeam: "MEX", awayTeam: "" },
 
   // 01.07 19:00 Eesti aeg
-  537426: { enabled: false, homeTeam: "", awayTeam: "" },
+  537426: { enabled: true, homeTeam: "ENG", awayTeam: "" },
 
   // 01.07 23:00 Eesti aeg
   537422: { enabled: true, homeTeam: "BEL", awayTeam: "" },
@@ -35,7 +35,7 @@ const manualKnockoutMatches = {
   537420: { enabled: true, homeTeam: "ESP", awayTeam: "" },
 
   // 03.07 02:00 Eesti aeg
-  537419: { enabled: false, homeTeam: "", awayTeam: "" },
+  537419: { enabled: true, homeTeam: "", awayTeam: "CRO" },
 
   // 03.07 06:00 Eesti aeg
   537429: { enabled: true, homeTeam: "SUI", awayTeam: "" },
