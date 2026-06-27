@@ -1,5 +1,9 @@
 const teamNameMap = {
 
+  Inglismaa: "ENG",
+
+  horvaatia: "CRO",
+
   kanada: "CAN",
 
   šveits: "SUI",
