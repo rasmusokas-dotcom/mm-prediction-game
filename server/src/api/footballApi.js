@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import testMatches from "../data/testMatches.js";
+import manualKnockoutMatches from "../data/manualKnockoutMatches.js";
 dotenv.config();
 
 const API_KEY = process.env.FOOTBALL_DATA_API_KEY;
@@ -56,31 +57,19 @@ async function getWorldCupMatches() {
 
       let status = match.status;
 
-      const wasAlreadyLiveOrFinished =
+      const wasAlreadyLive =
         previousMatch?.status === "IN_PLAY" ||
         previousMatch?.status === "LIVE" ||
-        previousMatch?.status === "PAUSED" ||
-        previousMatch?.status === "FINISHED";
+        previousMatch?.status === "PAUSED";
 
       const apiWentBackToScheduled =
         match.status === "TIMED" || match.status === "SCHEDULED";
 
-      if (previousMatch?.status === "FINISHED" && match.status !== "FINISHED") {
-        status = "FINISHED";
-      } else if (wasAlreadyLiveOrFinished && apiWentBackToScheduled) {
+      if (wasAlreadyLive && apiWentBackToScheduled) {
         status = previousMatch.status;
       }
-      let homeScore =
-        match.score?.fullTime?.home ??
-        match.score?.regularTime?.home ??
-        match.score?.halfTime?.home ??
-        null;
-
-      let awayScore =
-        match.score?.fullTime?.away ??
-        match.score?.regularTime?.away ??
-        match.score?.halfTime?.away ??
-        null;
+      let homeScore = match.score?.fullTime?.home ?? null;
+      let awayScore = match.score?.fullTime?.away ?? null;
 
       const previousHadScore =
         previousMatch &&
@@ -93,14 +82,24 @@ async function getWorldCupMatches() {
         homeScore = previousMatch.homeScore;
         awayScore = previousMatch.awayScore;
       }
+      const manualMatch = manualKnockoutMatches[match.id];
 
+      const homeTeam =
+        manualMatch?.enabled && manualMatch.homeTeam
+          ? manualMatch.homeTeam
+          : match.homeTeam?.tla || "";
+
+      const awayTeam =
+        manualMatch?.enabled && manualMatch.awayTeam
+          ? manualMatch.awayTeam
+          : match.awayTeam?.tla || "";
       return {
         id: match.id,
         stage: match.stage,
         group: match.group,
         utcDate: match.utcDate,
-        homeTeam: match.homeTeam?.tla || "",
-        awayTeam: match.awayTeam?.tla || "",
+        homeTeam,
+        awayTeam,
         homeScore,
         awayScore,
         status,

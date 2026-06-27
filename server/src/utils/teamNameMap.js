@@ -1,4 +1,33 @@
 const teamNameMap = {
+  egipt: "EGY",
+  egiptus: "EGY",
+  egypt: "EGY",
+  belgia: "BEL",
+  bel: "BEL",
+  belgium: "BEL",
+  senegal: "SEN",
+  norra: "NOR",
+  iraan: "IRN",
+  rootsi: "SWE",
+  kanada: "CAN",
+
+  šveits: "SUI",
+
+  BosniaHertsegoviina: "BIH",
+  BosniajaHertsegoviina: "BIH",
+  BosniaJaHertsegoviina: "BIH",
+  bosniajahertsegoviina: "BIH",
+
+  Elevandiluurannik: "CIV",
+
+  jaapan: "JPN",
+
+  maroko: "MAR",
+
+  austraalia: "AUS",
+
+  uru: "URY",
+
   bra: "BRA",
   brazil: "BRA",
   brasiilia: "BRA",
@@ -6,8 +35,6 @@ const teamNameMap = {
 
   holland: "NED",
   madalmaad: "NED",
-
-  spa:"ESP",
 
   curacao: "CUW",
 
@@ -64,7 +91,7 @@ const teamNameMap = {
   alg: "ALG",
   alzeeria: "ALG",
   alžeeria: "ALG",
-  algeria: "ALG"
-}
+  algeria: "ALG",
+};
 
-export default teamNameMap
+export default teamNameMap;
