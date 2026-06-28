@@ -1,37 +1,33 @@
 const teamNameMap = {
+  portugal: "POR",
+
+  ghana: "GHA",
+
+  ecuador: "ECU",
+
+  colombia: "COL",
+  kolumbia: "COL",
 
   inglismaa: "ENG",
 
   horvaatia: "CRO",
 
-  kanada: "CAN",
-
-  šveits: "SUI",
-
-  BosniaHertsegoviina: "BIH",
-  BosniajaHertsegoviina: "BIH",
-  BosniaJaHertsegoviina: "BIH",
-  bosniajahertsegoviina: "BIH",
-
-  Elevandiluurannik: "CIV",
-  kolumbia: "COL",
-
-  jaapan: "JPN",
-
-  maroko: "MAR",
-  
-  austraalia: "AUS",
-
   egipt: "EGY",
   egiptus: "EGY",
   egypt: "EGY",
+
   belgia: "BEL",
   bel: "BEL",
   belgium: "BEL",
+
   senegal: "SEN",
+
   norra: "NOR",
+
   iraan: "IRN",
+
   rootsi: "SWE",
+
   kanada: "CAN",
 
   šveits: "SUI",
@@ -41,7 +37,7 @@ const teamNameMap = {
   BosniaJaHertsegoviina: "BIH",
   bosniajahertsegoviina: "BIH",
 
-  Elevandiluurannik: "CIV",
+  elevandiluurannik: "CIV",
 
   jaapan: "JPN",
 
@@ -58,9 +54,6 @@ const teamNameMap = {
 
   holland: "NED",
   madalmaad: "NED",
-
-  spa:"ESP",
-  hispaania:"ESP",
 
   curacao: "CUW",
 

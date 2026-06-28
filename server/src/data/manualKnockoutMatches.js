@@ -20,25 +20,25 @@ const manualKnockoutMatches = {
   537416: { enabled: true, homeTeam: "FRA", awayTeam: "SWE" },
 
   // 01.07 04:00 Eesti aeg
-  537425: { enabled: true, homeTeam: "MEX", awayTeam: "" },
+  537425: { enabled: true, homeTeam: "MEX", awayTeam: "ECU" },
 
   // 01.07 19:00 Eesti aeg
-  537426: { enabled: true, homeTeam: "ENG", awayTeam: "" },
+  537426: { enabled: true, homeTeam: "ENG", awayTeam: "COD" },
 
   // 01.07 23:00 Eesti aeg
-  537422: { enabled: true, homeTeam: "BEL", awayTeam: "" },
+  537422: { enabled: true, homeTeam: "BEL", awayTeam: "SEN" },
 
   // 02.07 03:00 Eesti aeg
   537421: { enabled: true, homeTeam: "USA", awayTeam: "BIH" },
 
   // 02.07 22:00 Eesti aeg
-  537420: { enabled: true, homeTeam: "ESP", awayTeam: "" },
+  537420: { enabled: true, homeTeam: "ESP", awayTeam: "AUT" },
 
   // 03.07 02:00 Eesti aeg
-  537419: { enabled: true, homeTeam: "", awayTeam: "CRO" },
+  537419: { enabled: true, homeTeam: "POR", awayTeam: "CRO" },
 
   // 03.07 06:00 Eesti aeg
-  537429: { enabled: true, homeTeam: "SUI", awayTeam: "" },
+  537429: { enabled: true, homeTeam: "SUI", awayTeam: "ALG" },
 
   // 03.07 21:00 Eesti aeg
   537428: { enabled: true, homeTeam: "AUS", awayTeam: "EGY" },
@@ -47,7 +47,7 @@ const manualKnockoutMatches = {
   537427: { enabled: true, homeTeam: "ARG", awayTeam: "CPV" },
 
   // 04.07 04:30 Eesti aeg
-  537430: { enabled: false, homeTeam: "", awayTeam: "" },
+  537430: { enabled: true, homeTeam: "COL", awayTeam: "GHA" },
 
   // ---------- LAST_16 ----------
 
