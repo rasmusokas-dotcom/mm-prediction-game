@@ -1,26 +1,28 @@
 function addTeam(list, team) {
   if (team && !list.includes(team)) {
-    list.push(team)
+    list.push(team);
   }
 }
 
 function getWinner(match) {
-  if (
-    match.homeScore === null ||
-    match.awayScore === null
-  ) {
-    return null
+  if (match.homeScore === null || match.awayScore === null) {
+    return null;
   }
 
   if (match.homeScore > match.awayScore) {
-    return match.homeTeam
+    return match.homeTeam;
   }
 
   if (match.awayScore > match.homeScore) {
-    return match.awayTeam
+    return match.awayTeam;
   }
 
-  return null
+  return null;
+}
+
+function addMatchTeams(list, match) {
+  addTeam(list, match.homeTeam);
+  addTeam(list, match.awayTeam);
 }
 
 function buildActualBracket(matches) {
@@ -31,50 +33,37 @@ function buildActualBracket(matches) {
     semiFinals: [],
     finalists: [],
     thirdPlace: null,
-    winner: null
-  }
+    winner: null,
+  };
 
-  matches.forEach(match => {
-    const stage = match.stage
-    const winner = getWinner(match)
-
-    if (!winner) {
-      return
-    }
-
-    if (stage === "LAST_32") {
-      addTeam(actualBracket.roundOf16, winner)
-    }
-
-    if (stage === "LAST_16") {
-      addTeam(actualBracket.quarterFinals, winner)
-    }
-
-    if (stage === "QUARTER_FINALS") {
-      addTeam(actualBracket.semiFinals, winner)
-    }
-
-    if (stage === "SEMI_FINALS") {
-      addTeam(actualBracket.finalists, winner)
-    }
-
-    if (stage === "THIRD_PLACE") {
-      actualBracket.thirdPlace = winner
-    }
-
-    if (stage === "FINAL") {
-      actualBracket.winner = winner
-    }
-  })
-
-  matches.forEach(match => {
+  matches.forEach((match) => {
     if (match.stage === "LAST_32") {
-      addTeam(actualBracket.roundOf32, match.homeTeam)
-      addTeam(actualBracket.roundOf32, match.awayTeam)
+      addMatchTeams(actualBracket.roundOf32, match);
     }
-  })
 
-  return actualBracket
+    if (match.stage === "LAST_16") {
+      addMatchTeams(actualBracket.roundOf16, match);
+    }
+
+    if (match.stage === "QUARTER_FINALS") {
+      addMatchTeams(actualBracket.quarterFinals, match);
+    }
+
+    if (match.stage === "SEMI_FINALS") {
+      addMatchTeams(actualBracket.semiFinals, match);
+    }
+
+    if (match.stage === "FINAL") {
+      addMatchTeams(actualBracket.finalists, match);
+      actualBracket.winner = getWinner(match);
+    }
+
+    if (match.stage === "THIRD_PLACE") {
+      actualBracket.thirdPlace = getWinner(match);
+    }
+  });
+
+  return actualBracket;
 }
 
-export default buildActualBracket
+export default buildActualBracket;

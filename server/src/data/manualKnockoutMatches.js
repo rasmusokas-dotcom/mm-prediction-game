@@ -51,13 +51,28 @@ const manualKnockoutMatches = {
 
   // ---------- LAST_16 ----------
 
-  537376: { enabled: false, homeTeam: "", awayTeam: "" },
-  537375: { enabled: false, homeTeam: "", awayTeam: "" },
-  537377: { enabled: false, homeTeam: "", awayTeam: "" },
+  // 04.07 20:00 Eesti aeg — CAN vs NED/MAR võitja
+  537376: { enabled: true, homeTeam: "CAN", awayTeam: "" },
+
+  // 05.07 00:00 Eesti aeg — PAR vs FRA/SWE võitja
+  537375: { enabled: true, homeTeam: "PAR", awayTeam: "" },
+
+  // 05.07 23:00 Eesti aeg — BRA vs CIV/NOR võitja
+  537377: { enabled: true, homeTeam: "BRA", awayTeam: "" },
+
+  // 06.07 03:00 Eesti aeg — MEX/ECU võitja vs ENG/COD võitja
   537378: { enabled: false, homeTeam: "", awayTeam: "" },
+
+  // 06.07 22:00 Eesti aeg — POR/CRO võitja vs ESP/AUT võitja
   537379: { enabled: false, homeTeam: "", awayTeam: "" },
+
+  // 07.07 03:00 Eesti aeg — USA/BIH võitja vs BEL/SEN võitja
   537380: { enabled: false, homeTeam: "", awayTeam: "" },
+
+  // 07.07 19:00 Eesti aeg — ARG/CPV võitja vs AUS/EGY võitja
   537381: { enabled: false, homeTeam: "", awayTeam: "" },
+
+  // 07.07 23:00 Eesti aeg — SUI/DZA võitja vs COL/GHA võitja
   537382: { enabled: false, homeTeam: "", awayTeam: "" },
 
   // ---------- QUARTER_FINALS ----------
