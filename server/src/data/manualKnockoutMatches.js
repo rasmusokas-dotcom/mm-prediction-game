@@ -52,7 +52,7 @@ const manualKnockoutMatches = {
   // ---------- LAST_16 ----------
 
   // 04.07 20:00 Eesti aeg — CAN vs NED/MAR võitja
-  537376: { enabled: true, homeTeam: "CAN", awayTeam: "" },
+  537376: { enabled: true, homeTeam: "CAN", awayTeam: "MAR" },
 
   // 05.07 00:00 Eesti aeg — PAR vs FRA/SWE võitja
   537375: { enabled: true, homeTeam: "PAR", awayTeam: "" },
