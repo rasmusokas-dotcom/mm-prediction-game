@@ -55,7 +55,7 @@ const manualKnockoutMatches = {
   537376: { enabled: true, homeTeam: "CAN", awayTeam: "MAR" },
 
   // 05.07 00:00 Eesti aeg — PAR vs FRA/SWE võitja
-  537375: { enabled: true, homeTeam: "PAR", awayTeam: "" },
+  537375: { enabled: true, homeTeam: "PAR", awayTeam: "FRA" },
 
   // 05.07 23:00 Eesti aeg — BRA vs CIV/NOR võitja
   537377: { enabled: true, homeTeam: "BRA", awayTeam: "NOR" },
