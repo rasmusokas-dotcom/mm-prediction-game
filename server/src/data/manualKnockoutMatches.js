@@ -61,7 +61,7 @@ const manualKnockoutMatches = {
   537377: { enabled: true, homeTeam: "BRA", awayTeam: "NOR" },
 
   // 06.07 03:00 Eesti aeg — MEX/ECU võitja vs ENG/COD võitja
-  537378: { enabled: true, homeTeam: "MEX", awayTeam: "" },
+  537378: { enabled: true, homeTeam: "MEX", awayTeam: "ENG" },
 
   // 06.07 22:00 Eesti aeg — POR/CRO võitja vs ESP/AUT võitja
   537379: { enabled: false, homeTeam: "", awayTeam: "" },
