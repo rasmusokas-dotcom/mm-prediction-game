@@ -67,7 +67,7 @@ const manualKnockoutMatches = {
   537379: { enabled: false, homeTeam: "", awayTeam: "" },
 
   // 07.07 03:00 Eesti aeg — USA/BIH võitja vs BEL/SEN võitja
-  537380: { enabled: true, homeTeam: "", awayTeam: "BEL" },
+  537380: { enabled: true, homeTeam: "USA", awayTeam: "BEL" },
 
   // 07.07 19:00 Eesti aeg — ARG/CPV võitja vs AUS/EGY võitja
   537381: { enabled: false, homeTeam: "", awayTeam: "" },
