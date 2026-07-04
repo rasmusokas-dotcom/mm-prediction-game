@@ -78,7 +78,7 @@ const manualKnockoutMatches = {
  // ---------- QUARTER_FINALS ----------
 
 // 09.07 23:00 Eesti aeg
-537383: { enabled: true, homeTeam: "", awayTeam: "MAR" },
+537383: { enabled: true, homeTeam: "FRA", awayTeam: "MAR" },
 
 // 10.07 22:00 Eesti aeg
 537384: { enabled: false, homeTeam: "", awayTeam: "" },
