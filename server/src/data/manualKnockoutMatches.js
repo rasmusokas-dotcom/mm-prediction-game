@@ -73,7 +73,7 @@ const manualKnockoutMatches = {
   537381: { enabled: true, homeTeam: "ARG", awayTeam: "EGY" },
 
   // 07.07 23:00 Eesti aeg — SUI/DZA võitja vs COL/GHA võitja
-  537382: { enabled: true, homeTeam: "SUI", awayTeam: "" },
+  537382: { enabled: true, homeTeam: "SUI", awayTeam: "COL" },
 
   // ---------- QUARTER_FINALS ----------
 
