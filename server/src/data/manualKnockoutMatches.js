@@ -75,25 +75,37 @@ const manualKnockoutMatches = {
   // 07.07 23:00 Eesti aeg — SUI/DZA võitja vs COL/GHA võitja
   537382: { enabled: true, homeTeam: "SUI", awayTeam: "COL" },
 
-  // ---------- QUARTER_FINALS ----------
+ // ---------- QUARTER_FINALS ----------
 
-  537383: { enabled: false, homeTeam: "", awayTeam: "" },
-  537384: { enabled: false, homeTeam: "", awayTeam: "" },
-  537385: { enabled: false, homeTeam: "", awayTeam: "" },
-  537386: { enabled: false, homeTeam: "", awayTeam: "" },
+// 09.07 23:00 Eesti aeg
+537383: { enabled: true, homeTeam: "", awayTeam: "MAR" },
 
-  // ---------- SEMI_FINALS ----------
+// 10.07 22:00 Eesti aeg
+537384: { enabled: false, homeTeam: "", awayTeam: "" },
 
-  537387: { enabled: false, homeTeam: "", awayTeam: "" },
-  537388: { enabled: false, homeTeam: "", awayTeam: "" },
+// 11.07 00:00 Eesti aeg
+537385: { enabled: false, homeTeam: "", awayTeam: "" },
 
-  // ---------- THIRD_PLACE ----------
+// 12.07 04:00 Eesti aeg
+537386: { enabled: false, homeTeam: "", awayTeam: "" },
 
-  537389: { enabled: false, homeTeam: "", awayTeam: "" },
+// ---------- SEMI_FINALS ----------
 
-  // ---------- FINAL ----------
+// 15.07 22:00 Eesti aeg
+537387: { enabled: false, homeTeam: "", awayTeam: "" },
 
-  537390: { enabled: false, homeTeam: "", awayTeam: "" },
+// 16.07 22:00 Eesti aeg
+537388: { enabled: false, homeTeam: "", awayTeam: "" },
+
+// ---------- THIRD_PLACE ----------
+
+// 19.07 00:00 Eesti aeg
+537389: { enabled: false, homeTeam: "", awayTeam: "" },
+
+// ---------- FINAL ----------
+
+// 20.07 22:00 Eesti aeg
+537390: { enabled: false, homeTeam: "", awayTeam: "" },
 };
 
 export default manualKnockoutMatches;
