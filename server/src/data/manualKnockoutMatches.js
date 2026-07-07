@@ -87,7 +87,7 @@ const manualKnockoutMatches = {
 537385: { enabled: true, homeTeam: "NOR", awayTeam: "ENG" },
 
 // 12.07 04:00 Eesti aeg
-537386: { enabled: true, homeTeam: "ARG", awayTeam: "" },
+537386: { enabled: false, homeTeam: "", awayTeam: "" },
 
 // ---------- SEMI_FINALS ----------
 
