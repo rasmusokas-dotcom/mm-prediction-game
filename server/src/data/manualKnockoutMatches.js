@@ -100,12 +100,12 @@ const manualKnockoutMatches = {
 // ---------- THIRD_PLACE ----------
 
 // 19.07 00:00 Eesti aeg
-537389: { enabled: true, homeTeam: "FRA", awayTeam: "" },
+537389: { enabled: true, homeTeam: "FRA", awayTeam: "ENG" },
 
 // ---------- FINAL ----------
 
 // 20.07 22:00 Eesti aeg
-537390: { enabled: true, homeTeam: "ESP", awayTeam: "" },
+537390: { enabled: true, homeTeam: "ESP", awayTeam: "ARG" },
 };
 
 export default manualKnockoutMatches;
